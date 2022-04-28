@@ -1,11 +1,21 @@
 
-void main(){
+void main() async{
    print('Antes de la peticion');
-   httpGet('http://api.nasa.com/robertPhotos')
-       .then((data) =>{
-         print(data.toUpperCase())
-   });
+
+   final data = await httpGet('http://api.nasa.com/robertPhotos');
+
+   final nombre = await getNombre('10');
+
+   print(data);
+   print(nombre);
+       //.then( (data) => print(data));
+
    print('Fin del programa');
+
+}
+
+Future<String> getNombre(String id) async{
+  return '$id - Santiago';
 }
 
 Future<String> httpGet(String url){
